@@ -3,8 +3,11 @@ import os
 import pytest
 from playwright.sync_api import Playwright, expect
 
-# import utils.secret_config
-
+try:
+    PASSWORD = os.environ['PASSWORD']
+except KeyError:
+    import utils.secret_config
+    PASSWORD = utils.secret_config.PASSWORD
 
 @pytest.fixture(scope="function")
 def set_up(browser):
@@ -29,8 +32,8 @@ def login_set_up(set_up):
     # page.locator("#loginusername").click()
     page.locator("#loginusername").fill("shubham@619")
     # page.locator("#loginusername").press("Tab")
-    # page.locator("#loginpassword").fill(utils.secret_config.PASSWORD)
-    page.locator("#loginpassword").fill(os.environ['PASSWORD'])
+    # page.locator("#loginpassword").fill()
+    page.locator("#loginpassword").fill(PASSWORD)
     page.locator("button:has-text('Log in')").click()
     # assert_issue = True
     # while assert_issue:
