@@ -3,9 +3,9 @@ from pom.home_page_elements import HomePage
 import pytest
 
 @pytest.mark.integration
-def test_homepage(set_up):
+def test_homepage(login_set_up):
 
-    page = set_up
+    page = login_set_up
 
     home_page = HomePage(page)
 
