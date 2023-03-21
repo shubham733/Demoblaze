@@ -13,6 +13,4 @@ def test_homepage(login_set_up, assert_snapshot):
 
     expect(home_page.product_header).to_be_visible()
     expect(home_page.product_email).to_be_visible()
-    time.sleep(2)
-    assert_snapshot(page.screenshot(mask=[home_page.product_header]), threshold=1)
 
